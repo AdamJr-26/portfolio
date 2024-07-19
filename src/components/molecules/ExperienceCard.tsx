@@ -1,0 +1,56 @@
+import React from 'react'
+import { Achievement } from './index'
+import { InViewWrapper } from '../atoms';
+// component's props
+interface ExperienceCardPrps {
+    companyName: string;
+    jobTitle: string;
+    dates: string;
+
+}
+
+function ExperienceCard({ companyName, jobTitle, dates }: ExperienceCardPrps) {
+    const [isOpenAchievement, setIsOpenAchievement] = React.useState<boolean>(true)
+
+    return (
+        <div className='flex flex-col gap-[20px]'>
+            <InViewWrapper>
+                <div className='flex flex-col justify-between sm:flex-row w-full gap-[20px]'>
+                    <div className='flex flex-col gap-[10px]'>
+                        <p className='text-white text-[16px] md:text-[20px]'>{companyName}</p>
+                        <p className='text-white text-[14px]'>{jobTitle}</p>
+                        <p className='text-gray-700 text-[13px]'>{dates}</p>
+                    </div>
+                    <div>
+                        <button onClick={() => setIsOpenAchievement(!isOpenAchievement)} className='hover:underline text-white text-[13px] md:text-[16px] flex flex-row items-center justify-center gap-[10px]'>
+                            <span className=''>{
+                                isOpenAchievement ? 'Hide Achievements' : 'Show Achievements'
+                            }</span>
+                            {
+                                isOpenAchievement ?
+                                    <span className='-rotate-180 transition duration-600'>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14 16.9399V12.9399H0.5V10.9299H14V6.93994L19 11.9399L14 16.9399Z" fill="white" />
+                                        </svg>
+                                    </span> : <span className='transition duration-600'>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14 16.9399V12.9399H0.5V10.9299H14V6.93994L19 11.9399L14 16.9399Z" fill="white" />
+                                        </svg>
+                                    </span>
+                            }
+                        </button>
+                    </div>
+                </div>
+            </InViewWrapper>
+            {
+                isOpenAchievement ?
+                    <InViewWrapper delay={400}>
+                        <Achievement />
+                    </InViewWrapper>
+                    : null
+            }
+        </div>
+    )
+}
+
+export default ExperienceCard

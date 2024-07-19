@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
+
+@layer base {
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: serif;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  /* letter-spacing: 1px; */
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* ON SCROLL ANIMATIONS */
+.hide-element {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+
+
+/* default show animation  */
+.inview-slide {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  transition: all 1s;
+}
+
+.inview-fade{
+  animation: inview-fade-animation 600ms both;
+}
+
+@keyframes inview-fade-animation{
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  50%{
+    opacity: 0.3;
+    
+  }
+  100%{
+    transform: translateY(0px);
+  }
+ 
+}
+
+
+.hexagon-item {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  /* animation: hexagon-item-animation 4s linear infinite; */
+  transition: 1s;
+  background-color: #1E1E1E ;
+}
+
+.hexagon-item:hover{
+  background-color:white ;
+  transition: 0s;
+}
+@keyframes hexagon-item-animation{
+  0%{
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+.hexagon-item::after{
+  content: '';
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+  left: 2px;
+  background-color:#1E1E1E ;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+/* after:hover:bg-dim hover:bg-white bg-dim */
+/* .hexagon-item::before{
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: rgba(255,255,255,0.03);
+  z-index: 2;
+} */
+
+
+
+
+
+.hexagon-container{
+  
+}
+
+.hexagon-row{
+  display: inline-flex;
+  margin-top: -32px;
+  margin-left: -50px;
+
+}
+.hexagon-row:nth-child(even){
+  margin-left: 2px;
+}
+
+.item-hexagon{
+  width: 100px;
+  height: 110px;
+  background-color: #1E1E1E;
+  margin: 2px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  animation: hexagon-item-animation 4s linear infinite;
+  transition: 1s;
+  position: relative;
+}
+
+.item-hexagon::after{
+  content: '';
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+  left: 2px;
+  background-color:#1E1E1E ;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.item-hexagon:hover {
+  background-color: #39FF14;
+  transition: 0s;
+}

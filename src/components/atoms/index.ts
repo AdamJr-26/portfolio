@@ -1,0 +1,10 @@
+export { default as Background } from './Background';
+export { default as LetsChat } from './LetsChat';
+export { default as Contacts } from './Contacts';
+export { default as Me } from './Me';
+export { default as GreetingText } from './GreetingText';
+export { default as SliderIndicator } from './SliderIndicator';
+export { default as SkillHexagonRow } from './SkillHexagonRow';
+export { default as DotsBackground } from './DotsBackground';
+export { default as InViewWrapper } from './InViewWrapper';
+export { default as HexagonBackground } from './HexagonBackground';

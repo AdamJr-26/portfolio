@@ -1,0 +1,11 @@
+
+
+typescript
+best react and tailwind components
+snapping scroll -  https://www.youtube.com/watch?v=ytl6TrroGis&ab_channel=WebDevSimplified
+animate on scroll - https://www.youtube.com/watch?v=T33NN_pPeNI&ab_channel=BeyondFireship
+css grid
+tailwind advance tutorial setup
+laravel
+react components
+
