@@ -16,10 +16,10 @@ function Contacts() {
                 <Icon className='text-white ' icon="ic:baseline-facebook" />
                 <span className='text-white hidden md:flex'>Facebook</span>
             </a>
-            <a  href='#' target='_blank' className='flex items-center gap-[8px]'>
+            {/* <a  href='#' target='_blank' className='flex items-center gap-[8px]'>
                 <Icon className='text-white ' icon="quill:paper" />
                 <span className='text-white hidden md:flex'>CV</span>
-            </a>
+            </a> */}
         </div>
     )
 }

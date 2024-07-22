@@ -5,19 +5,75 @@ import { InViewWrapper } from '../atoms';
 
 function Experiences() {
 
-// API
-const jobExperiences = [
-  {
-    companyName: '',
-    jobTitle: '',
-    dates: '',
-  },
-  {
-    companyName: '',
-    jobTitle: '',
-    dates: '',
-  },
-]
+  // API
+  // https://res.cloudinary.com/dy1od3qwx/image/upload/v1720276954/
+  const jobExperiences = [
+    {
+      companyName: 'Alfamart Trading Philippines Inc.',
+      jobTitle: 'Information Technology Assistant',
+      dates: '09/2023 - 03/2024',
+      achievements: [
+        {
+          imgsrcs: [
+            'my-portoflio/businessdev/xvdjqdqgxuxqss14pvhe',
+            'my-portoflio/businessdev/erjiwoceqkvltqr1zpwo',
+            'my-portoflio/businessdev/inbifhtqlqgx9kxx7fpk',
+            'my-portoflio/businessdev/aum9hj16gdser5qxws3b',
+            'my-portoflio/businessdev/xl7yifmdrrzuxjnjk7h8',
+            'my-portoflio/businessdev/q55wt7zllzwjds7nlcmq',
+            'my-portoflio/businessdev/nvwjsl9qocyxhbhnc0yp',
+          ],
+          title: 'Business Development Application',
+          technologies: ['Figma'],
+          description: 'Digitizing and consolidating business processes, from surveying to opening the store.'
+        },
+        {
+          imgsrcs: [
+            'my-portoflio/myhelp/meliumsnt79b9059sd3s',
+            'my-portoflio/myhelp/smx89zplnfn9wrb1br6g',
+            'my-portoflio/myhelp/rnry3cm0rgi9y1kn2btn',
+            'my-portoflio/myhelp/x3x8cqflg1r4zjxbvwuy',
+          ],
+          title: 'MyHelp - Helpdesk Enhancement',
+          technologies: ['Figma'],
+          description: 'To provide support, get assistance from different departments.'
+        },
+        {
+          imgsrcs: [
+            'my-portoflio/chatbot-webchatbot/ylkizbdp1c6uwamb4g3m',
+            'my-portoflio/chatbot-webchatbot/y70dcdk5rspf75rp990d',
+
+          ],
+          title: 'Goole Chat Bot - Alfie',
+          technologies: ['Python, Flask, React'],
+          description: ''
+        },
+      ]
+    },
+    {
+      companyName: 'Top Bliss',
+      jobTitle: 'Frontend Web Developer',
+      dates: '06/2022 - 07/2022',
+      achievements: [
+        {
+          imgsrcs: [
+            'my-portoflio/hr-services/amsbx5iwitpiyvv1obsr',
+            'my-portoflio/hr-services/t1ifg1uw2mrcp3xy8n46',
+            'my-portoflio/hr-services/bsuktnkevmh715wyh6np',
+            'my-portoflio/hr-services/vv23cjumjleih40ehnm5',
+            'my-portoflio/hr-services/g4dbljtnudx2mdgo2bnq',
+            'my-portoflio/hr-services/yhmnm3yiohspiryoqsj8',
+            'my-portoflio/hr-services/tpg4rnq0u34pv4xrocmp',
+            'my-portoflio/hr-services/l63mmtltuvcozcs7igq2'
+
+          ],
+          title: 'HR Services',
+          technologies: ['PostgreSQL, VueJS, ExpressJS'],
+          description: ''
+        }
+      ]
+    },
+  ]
   return (
     <section id='experiences' className='flex flex-col relative overflow-visible max-h-fit'>
       <div className='absolute left-0 top-[50%] -translate-y-[50%] hidden 2xl:flex'>
@@ -35,10 +91,12 @@ const jobExperiences = [
         </div>
         {/* max-w-[1366px] w-full flex flex-col items-center justify-between relative z-10 p-[10px] lg:px-[20px] gap-[20px] */}
         <div className='flex flex-col gap-[30px] sm:p-[20px]  '>
-            <ExperienceCard companyName="Alfamart Trading Philippines Inc." jobTitle="Information Technology Assistant" dates="09/2023 - 03/2024" />
-            <ExperienceCard companyName="Top Bliss" jobTitle="Frontend Web Developer" dates="06/2022 - 07/2022" />
+          {
+            jobExperiences?.map((experience, i): any => (
+              <ExperienceCard key={i} experience={experience} />
+            ))
+          }
          
-          {/* <div className='bg-gray-700 min-h-[2px] w-full sm:hidden'></div> */}
         </div>
       </div>
     </section >

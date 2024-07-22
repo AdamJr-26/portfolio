@@ -1,21 +1,32 @@
 import React, { useState, useRef } from 'react'
-import { ExperienceCard, ExperienceAchievementsSlider } from '../molecules/index'
+import { ExperienceCard, ExperienceAchievementsSlider, SliderWrapper } from '../molecules/index'
 import { SliderIndicator } from '../atoms/index'
 import MyProjectSample from '../../assets/images/myproject.png';
-import { InViewWrapper } from '../atoms';
+import { InViewWrapper, } from '../atoms';
 import { Slide } from 'react-slideshow-image';
 
-function Achievement() {
+interface Achievements {
+    imgsrcs: string[];
+    title: string;
+    technologies: string[];
+    description: string;
+}
+
+interface AchievementProps {
+    achievements: Achievements[]
+}
+
+function Achievement({ achievements }: AchievementProps) {
     const responsiveSettings = [
         {
-            breakpoint: 1300,
+            breakpoint: 1280,
             settings: {
                 slidesToShow: 4,
                 slidesToScroll: 4,
             }
         },
         {
-            breakpoint: 1024,
+            breakpoint: 960,
             settings: {
                 slidesToShow: 3,
                 slidesToScroll: 3,
@@ -28,16 +39,18 @@ function Achievement() {
                 slidesToShow: 2,
                 slidesToScroll: 2
             }
+        },
+        {
+            breakpoint: 320,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
         }
     ];
-    const [activeSlide, setActiveSlide] = useState<number | boolean>(0);
-    // const indicators = (index: any) => (<SliderIndicator  activeSlide={activeSlide} index={index} />)
-    const indicators = (index: any) => (<div
-        key={index}
-        className={`${index === activeSlide ? 'bg-white hover:bg-white' : 'hover:bg-dim '}  cursor-pointer ml-[10px] p-[5px] border-white border-[1px]`}>
-    </div>);
+
     return (
-        <div className='flex flex-col gap-[40px]  '>
+        <div className='flex flex-col gap-[40px] '>
             <div className='flex flex-row gap-[30px] '>
                 <div className='min-w-[2px] bg-gray-700 min-h-full'></div>
                 <div>
@@ -45,49 +58,47 @@ function Achievement() {
             </div>
             <div className='flex flex-row gap-[30px] '>
                 <div className='min-w-[2px] bg-gray-700 min-h-full'></div>
-                <div className='gap-[20px] h-fit w-full '>
-                    <Slide
-                        onChange={(oldIndex, newIndex) => setActiveSlide(newIndex)}
+                <div className='flex flex-col gap-[20px] h-fit w-[100%]  '>
+                    <SliderWrapper
                         easing='ease-in'
-                        indicators={indicators}
                         arrows={false}
                         transitionDuration={400}
                         autoplay={false}
                         infinite={false}
                         responsive={responsiveSettings}
-                        cssClass=' position-relative; overflow:hidden'
-                        >
-                        <InViewWrapper delay={400} classname='inview-slide'>
-                            <div key={1} className='flex flex-col gap-[1px] items-center justify-center h-fit'>
-                                <div className='h-[200px] w-[300px] '>
-                                    <img className='object-cover h-full w-full' src={MyProjectSample} alt="" />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <p className='text-white text-[13px] sm:text-[15px] md:text-[16px]'>little descriptionof the app</p>
-                                </div>
-                            </div>
-                        </InViewWrapper>
-                        <InViewWrapper delay={200} classname='inview-slide'>
-                            <div key={2} className='flex flex-col gap-[10px] items-center justify-center h-fit'>
-                                <div className='h-[200px] w-[300px] '>
-                                    <img className='object-cover h-full w-full' src={MyProjectSample} alt="" />
-                                </div>
-                                <div className='flex justify-center'><p className='text-white text-[13px] sm:text-[15px] md:text-[16px]'>little descriptionof the app</p>
-                                </div>
-                            </div>
-                        </InViewWrapper>
-                        <InViewWrapper delay={0} classname='inview-slide'>
-                            <div key={3} className='flex flex-col gap-[10px] items-center justify-center h-fit'>
-                                <div className='h-[200px] w-[300px] '>
-                                    <img className='object-cover h-full w-full' src={MyProjectSample} alt="" />
-                                </div>
-                                <div className='flex justify-center'>
-                                    <p className='text-white text-[13px] sm:text-[15px] md:text-[16px]'>little descriptionof the app</p>
-                                </div>
-                            </div>
-                        </InViewWrapper>
-
-                    </Slide>
+                        canSwipe={false}
+                        indicatorSize={5}
+                    >
+                        {
+                            achievements?.map((achievement, index) => (
+                                <InViewWrapper key={index} delay={0} classname='inview-opacity'>
+                                    <div key={1} className='flex flex-col  items-center justify-center h-fit border-[1px]'>
+                                        <div className='h-[200px] w-[300px] '>
+                                            <SliderWrapper
+                                                easing='ease-in'
+                                                arrows={false}
+                                                autoplay={true}
+                                                duration={6000}
+                                                infinite={true}
+                                                transitionDuration={400}
+                                                canSwipe={true}
+                                                indicatorSize={2}
+                                            >   
+                                                {
+                                                    achievement['imgsrcs'].map((img, index) => (
+                                                        <img key={index} className='w-full h-full object-contain ' src={`https://res.cloudinary.com/dy1od3qwx/image/upload/v1720276954/${img}`} alt="" />
+                                                    ))
+                                                }
+                                            </SliderWrapper>
+                                        </div>
+                                        <div className='flex justify-center'>
+                                            <p className='text-white text-[13px] sm:text-[15px] md:text-[16px]'>little descriptionof the app</p>
+                                        </div>
+                                    </div>
+                                </InViewWrapper>
+                            ))
+                        }
+                    </SliderWrapper>
                 </div>
             </div>
         </div>
