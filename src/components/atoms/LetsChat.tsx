@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 function LetsChat() {
   return (
     <div className='flex items-center justify-between text-white border-[1px] p-[8px] w-full max-w-[640px]'>
-      <p className='text-white'>Adam.</p>
+      <p className='text-white'>A.C.M.</p>
       <div>
         <address>
           <a href="mailto:adamcompiomarcaida@example.com" className='flex items-center justify-center px-[8px] py-[4px] gap-[7px] border-[1px] border-white'>

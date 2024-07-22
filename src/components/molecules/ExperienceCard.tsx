@@ -2,14 +2,26 @@ import React from 'react'
 import { Achievement } from './index'
 import { InViewWrapper } from '../atoms';
 // component's props
-interface ExperienceCardPrps {
+
+interface Achievement {
+    imgsrcs: string[];
+    title: string;
+    technologies: string[];
+    description: string;
+}
+
+interface Experience {
     companyName: string;
     jobTitle: string;
     dates: string;
-
+    achievements: Achievement[];
 }
 
-function ExperienceCard({ companyName, jobTitle, dates }: ExperienceCardPrps) {
+interface ExperienceCardProps {
+    experience: Experience;
+}
+
+function ExperienceCard({ experience }: ExperienceCardProps) {
     const [isOpenAchievement, setIsOpenAchievement] = React.useState<boolean>(true)
 
     return (
@@ -17,9 +29,9 @@ function ExperienceCard({ companyName, jobTitle, dates }: ExperienceCardPrps) {
             <InViewWrapper>
                 <div className='flex flex-col justify-between sm:flex-row w-full gap-[20px]'>
                     <div className='flex flex-col gap-[10px]'>
-                        <p className='text-white text-[16px] md:text-[20px]'>{companyName}</p>
-                        <p className='text-white text-[14px]'>{jobTitle}</p>
-                        <p className='text-gray-700 text-[13px]'>{dates}</p>
+                        <p className='text-white text-[16px] md:text-[20px]'>{experience['companyName']}</p>
+                        <p className='text-white text-[14px]'>{experience['jobTitle']}</p>
+                        <p className='text-gray-700 text-[13px]'>{experience['dates']}</p>
                     </div>
                     <div>
                         <button onClick={() => setIsOpenAchievement(!isOpenAchievement)} className='hover:underline text-white text-[13px] md:text-[16px] flex flex-row items-center justify-center gap-[10px]'>
@@ -45,7 +57,7 @@ function ExperienceCard({ companyName, jobTitle, dates }: ExperienceCardPrps) {
             {
                 isOpenAchievement ?
                     <InViewWrapper delay={400}>
-                        <Achievement />
+                        <Achievement achievements={experience['achievements']} />
                     </InViewWrapper>
                     : null
             }
