@@ -17,7 +17,7 @@ function Home() {
     <div className='flex gap-[0px] flex-col font-body w-full bg-dark'>
       <Landing />
       <Experiences />
-      {/* <Projects /> */}
+      {/* <Projects /> */} 
       <Skills />
       <About />
       <Contacts />

@@ -50,7 +50,7 @@ body {
   opacity: 0;
   /* filter: blur(3px); */
   /* transform: translateX(-100%); */
-  transition: all 1s;
+  transition: all 0.5s;
 }
 
 
@@ -69,7 +69,7 @@ body {
 
 @keyframes inview-fade-animation{
   0% {
-    opacity: 0;
+    opacity: 0.1;
     transform: translateY(20px);
   }
 
@@ -167,3 +167,4 @@ body {
   background-color: #39FF14;
   transition: 0s;
 }
+

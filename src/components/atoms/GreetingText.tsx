@@ -6,7 +6,7 @@ import { Icon } from '@iconify/react';
 const GreetingText = () => {
 
     return (
-        <p className="text-white font-medium text-[24px]" >
+        <p className=" text-white font-medium text-[24px]" >
             <Typewriter
                 options={{
                     autoStart: true,

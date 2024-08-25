@@ -13,24 +13,27 @@ interface SliderWrapperProps {
   canSwipe?: boolean;
   responsive?: any;
   cssClass?: string;
-  indicatorSize?: 2 | 5;
-  
+  indicatorSize?: number;
+  isIndicators?: boolean;
+  nextArrow? : JSX.Element | React.ReactElement;
+  prevArrow? : JSX.Element | React.ReactElement;
+
 }
 
-function SliderWrapper({ children, indicatorSize = 2, ...props }: SliderWrapperProps) {
+function SliderWrapper({ children, cssClass, isIndicators = true, indicatorSize = 3, ...props }: SliderWrapperProps) {
   const [activeSlide, setActiveSlide] = useState<number | boolean>(0);
 
   const indicators = (index: any) => (<div
     key={index}
-    className={`${index === activeSlide ? 'bg-white hover:bg-white' : 'hover:bg-dim '}  cursor-pointer ml-[10px] p-[${indicatorSize}px] border-white border-[1px]`}>
+    className={`${index === activeSlide ? 'bg-white hover:bg-white' : 'hover:bg-dim '} p-[3px] cursor-pointer ml-[10px]  border-white border-[1px]`}>
   </div>)
 
   return (
     <Slide
       onChange={(oldIndex, newIndex) => setActiveSlide(newIndex)}
-      indicators={indicators}
+      indicators={isIndicators ? indicators : false}
       {...props}
-      cssClass=' position-relative;'
+      cssClass={cssClass}
     >
       {children}
     </Slide>

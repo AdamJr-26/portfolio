@@ -16,17 +16,18 @@ const InViewWrapper: FC<InViewWrapperProps> = ({ delay = 0, threshold = 0, class
 
     useEffect(() => {
         if (inView) {
-            const timer = setTimeout(() => {
-                setIsVisible(true);
-            }, delay);
-            return () => clearTimeout(timer);
+            setIsVisible(true);
+            // const timer = setTimeout(() => {
+            //     setIsVisible(true);
+            // }, delay);
+            // return () => clearTimeout(timer);
         } else {
             setIsVisible(false);
         }
     }, [inView, delay]);
 
     return (
-        <div ref={ref} className={`${isVisible ? classname : 'hide-element'}`}>
+        <div ref={ref} className={`${isVisible ? classname : 'hide-element '}`}>
             {children}
         </div>
     );

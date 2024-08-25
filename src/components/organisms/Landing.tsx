@@ -27,7 +27,10 @@ function Landing() {
                     <rect x="55.791" y="55.082" width="111.709" height="111.709" stroke="white" />
                 </svg>
             </div> */}
-            <div className='max-w-[1366px] w-full flex flex-col items-center justify-between relative z-10 p-[10px] lg:px-[20px] gap-[20px]'>
+
+            {/* removed the z-10 here for modal */}
+
+            <div className='max-w-[1366px] w-full flex flex-col items-center justify-between relative  p-[10px] lg:px-[20px] gap-[20px]'>
                 <TopNavBar />
                 <div className='flex items-center justify-between w-full'>
                     <div className='flex flex-col gap-[20px] w-full'>
@@ -44,8 +47,8 @@ function Landing() {
                         <Me />
                     </div>
                 </div>
-                <div className='flex py-[20px] flex-col items-center justify-center  2xl:scale-[1.5]'>
-                    <InViewWrapper>
+                <div className=' flex py-[20px] flex-col items-center justify-center  2xl:scale-[1.5]'>
+                 
                         <div className=' flex flex-col xl:w-[60%]'>
                             <div className='p-[10px] border-[1px] border-white relative '>
                                 <div className='absolute top-[-25px] scale-50 sm:scale-75 md:scale-1 '>
@@ -64,7 +67,7 @@ function Landing() {
                                 <p className='text-white text-[12px] md:text-[16px] xl:text-[18px]'>- Adam</p>
                             </div>
                         </div>
-                    </InViewWrapper>
+                    
 
                 </div>
                 <div className='flex md:hidden items-center justify-center self-center w-fit px-[4px] sm:px-[10px] py-[12px] sm: py-[24px] border-[1px] border-white'>
