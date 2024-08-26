@@ -57,7 +57,7 @@ function Achievement({ achievements }: AchievementProps) {
             <div className='flex flex-row gap-[15px] md:gap-[30px] '>
                 <div className='min-w-[2px] bg-gray-700 min-h-full'></div>
                 <div>
-                    <p className='text-white text-[13px] md:text-[16px]'>Utilized my knowledge in UI/UX design to help the team deliver the most effective solution for the client, implementing best practices to optimize the application developed with Python, React, and Laravel.</p></div>
+                    <p className='text-white text-[12px] md:text-[13px] xl:text-[15px]'>Utilized my knowledge in UI/UX design to help the team deliver the most effective solution for the client, implementing best practices to optimize the application developed with Python, React, and Laravel.</p></div>
             </div>
             <div className='flex flex-row   '>
                 <div className='min-w-[2px] bg-gray-700 min-h-full'></div>

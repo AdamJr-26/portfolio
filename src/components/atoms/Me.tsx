@@ -20,7 +20,7 @@ function Me() {
             <img className=' object-contain h-[340px] w-auto' src={MeSVG} alt="" />
             <div className='flex items-center gap-2 p-1 border-[1px] border-white w-fit'>
                 <div className='h-[20px] w-[20px] bg-primary'></div>
-                <p className=' font-medium text-white text-[12px] md:text-[14px] xl:text-[16px]'>Currently I am working on my portfolio</p>
+                <p className=' text-white text-[12px] md:text-[13px] xl:text-[15px]'>Currently I am working on my portfolio</p>
             </div>
         </div>
     );
