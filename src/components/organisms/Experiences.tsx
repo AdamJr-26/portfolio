@@ -65,7 +65,6 @@ function Experiences() {
             'my-portoflio/hr-services/yhmnm3yiohspiryoqsj8',
             'my-portoflio/hr-services/tpg4rnq0u34pv4xrocmp',
             'my-portoflio/hr-services/l63mmtltuvcozcs7igq2'
-
           ],
           title: 'HR Services',
           technologies: ['PostgreSQL, VueJS, ExpressJS'],
