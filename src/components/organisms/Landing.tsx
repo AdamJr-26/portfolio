@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import  { useEffect } from 'react'
 import { Background, GreetingText, Me } from '../atoms/index';
 import { TopNavBar } from '../molecules/index';
-import { Outlet, useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { InViewWrapper } from '../atoms';
 
 function Landing() {
 
@@ -21,7 +20,7 @@ function Landing() {
     return (
         <section className='flex flex-row justify-center relative overflow-hidden max-h-fit min-h-dvh'>
             <Background />
-            
+
             {/* <div className='absolute bottom-0 right-0 opacity-30 hidden lg:flex'>
                 <svg width="162" height="164" viewBox="0 0 162 164" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.5" y="0.5" width="111.709" height="111.709" stroke="white" />

@@ -35,15 +35,7 @@ const Projects: React.FC = () => {
   }, []);
 
   // projects' data
-  const projectsData = [
-    {
-      image: "",
-      languages: "",
-      title: "",
-      description: "",
-      button: "",
-    }
-  ]
+
 
   return (
     <section id='projects' className='flex flex-col max-h-fit min-h-screen bg-dark p-[20px] max-w-[1366px]'>

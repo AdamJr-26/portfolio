@@ -1,5 +1,3 @@
-import React from 'react';
-import smallBox from '../../assets/small-box.svg';
 import MeSVG from '../../assets/me.svg';
 
 function Me() {

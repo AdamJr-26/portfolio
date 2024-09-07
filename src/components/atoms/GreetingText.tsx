@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
 import Typewriter from 'typewriter-effect';
-import { Icon } from '@iconify/react';
 
 
 const GreetingText = () => {

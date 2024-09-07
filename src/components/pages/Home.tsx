@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { Outlet, useLocation, Link } from 'react-router-dom';
-import { Contacts, Experiences, Footer, Projects, Skills, Landing, About } from '../organisms/index';
+import {  useLocation } from 'react-router-dom';
+import {  Experiences,Skills, Landing } from '../organisms/index';
 function Home() {
   const location = useLocation();
 

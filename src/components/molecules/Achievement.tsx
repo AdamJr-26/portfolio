@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+
 import { SliderWrapper, ModalAchievementContent } from '../molecules/index'
 
 import { InViewWrapper, ReactModalWrapper, } from '../atoms';

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Slide } from 'react-slideshow-image';
 
 interface ExperienceAchievementsSliderProps {

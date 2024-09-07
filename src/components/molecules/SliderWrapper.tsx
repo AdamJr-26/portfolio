@@ -30,7 +30,7 @@ function SliderWrapper({ children, cssClass, isIndicators = true, indicatorSize 
 
   return (
     <Slide
-      onChange={(oldIndex, newIndex) => setActiveSlide(newIndex)}
+      onChange={(_, newIndex) => setActiveSlide(newIndex)}
       indicators={isIndicators ? indicators : false}
       {...props}
       cssClass={cssClass}

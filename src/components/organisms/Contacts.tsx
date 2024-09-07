@@ -1,5 +1,4 @@
-import React from 'react';
-import { HexagonBackground } from '../atoms';
+
 function Contacts() {
   return (
     <section id='contact' className='flex flex-row justify-center relative overflow-hidden max-h-fit min-h-dvh'>

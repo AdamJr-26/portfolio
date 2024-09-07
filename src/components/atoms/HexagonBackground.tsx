@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 function HexagonBackground() {
   const [hexagons, setHexagons] = useState<JSX.Element[]>([]);
