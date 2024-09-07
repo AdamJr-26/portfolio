@@ -1,5 +1,4 @@
-import React, { useEffect , useState} from 'react'
-import { Icon } from '@iconify/react';
+import  { useEffect , useState} from 'react'
 import { SliderWrapper } from './index';
 import { SliderNextPrev } from '../atoms';
 

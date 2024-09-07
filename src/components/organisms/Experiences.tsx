@@ -1,7 +1,5 @@
-import React, { useState, useRef } from 'react'
-import { ExperienceCard, ExperienceAchievementsSlider, Achievement } from '../molecules/index';
+import { ExperienceCard, } from '../molecules/index';
 import { DotsBackground } from '../atoms/index';
-import { InViewWrapper } from '../atoms';
 
 function Experiences() {
 
