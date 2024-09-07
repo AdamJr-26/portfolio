@@ -5,10 +5,11 @@ interface InViewWrapperProps {
     delay?: number;
     threshold?: number;
     classname?: string;
+    style?: string;
     children: ReactElement;
 }
 
-const InViewWrapper: FC<InViewWrapperProps> = ({ delay = 0, threshold = 0, classname = 'inview-fade', children }) => {
+const InViewWrapper: FC<InViewWrapperProps> = ({ delay = 0, threshold = 0, classname = 'inview-fade', style, children }) => {
     const { ref, inView } = useInView({
         threshold: threshold,
     });
@@ -27,7 +28,7 @@ const InViewWrapper: FC<InViewWrapperProps> = ({ delay = 0, threshold = 0, class
     }, [inView, delay]);
 
     return (
-        <div ref={ref} className={`${isVisible ? classname : 'hide-element '}`}>
+        <div ref={ref} className={`${isVisible ? classname : 'hide-element '} ${style}`}>
             {children}
         </div>
     );

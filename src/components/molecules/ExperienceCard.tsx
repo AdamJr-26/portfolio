@@ -14,6 +14,7 @@ interface Experience {
     companyName: string;
     jobTitle: string;
     dates: string;
+    responsibilities?: string;
     achievements: Achievement[];
 }
 
@@ -72,8 +73,16 @@ function ExperienceCard({ experience }: ExperienceCardProps) {
             </InViewWrapper>
             {
                 isOpenAchievement ?
+
                     <InViewWrapper delay={400}>
-                        <Achievement achievements={experience['achievements']} />
+                        <div className='flex flex-col gap-[40px] '>
+                            <div className='flex flex-row gap-[15px] md:gap-[30px] '>
+                                <div className='min-w-[2px] bg-gray-700 min-h-full'></div>
+                                <div>
+                                    <p className='text-white text-[12px] md:text-[13px] xl:text-[15px]'>{experience['responsibilities']}</p></div>
+                            </div>
+                            <Achievement achievements={experience['achievements']} />
+                        </div>
                     </InViewWrapper>
                     : null
             }

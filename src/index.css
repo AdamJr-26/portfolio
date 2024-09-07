@@ -61,25 +61,26 @@ body {
   transition: all 0.6s ease-in-out;
 }
 
-.inview-fade{
+.inview-fade {
   animation: inview-fade-animation 600ms both;
-  
+
 }
 
-@keyframes inview-fade-animation{
+@keyframes inview-fade-animation {
   0% {
     opacity: 0.1;
     transform: translateY(20px);
   }
 
-  50%{
+  50% {
     opacity: 0.3;
-    
+
   }
-  100%{
+
+  100% {
     transform: translateY(0px);
   }
- 
+
 }
 
 
@@ -87,36 +88,40 @@ body {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   /* animation: hexagon-item-animation 4s linear infinite; */
   transition: 1s;
-  background-color: #1E1E1E ;
+  background-color: #1E1E1E;
 }
 
-.hexagon-item-active{
-  background-color:white ;
+.hexagon-item-active {
+  background-color: #39FF14;
   transition: 0s;
 }
 
-.hexagon-item:hover{
-  background-color:white ;
+.hexagon-item:hover {
+  background-color: #39FF14;
   transition: 0s;
 }
-@keyframes hexagon-item-animation{
-  0%{
+
+@keyframes hexagon-item-animation {
+  0% {
     filter: hue-rotate(0deg);
   }
+
   100% {
     filter: hue-rotate(360deg);
   }
 }
-.hexagon-item::after{
+
+.hexagon-item::after {
   content: '';
   position: absolute;
   top: 2px;
   bottom: 2px;
   right: 2px;
   left: 2px;
-  background-color:#1E1E1E ;
+  background-color: #1E1E1E;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
+
 /* after:hover:bg-dim hover:bg-white bg-dim */
 /* .hexagon-item::before{
   content: '';
@@ -131,21 +136,20 @@ body {
 
 
 
-.hexagon-container{
-  
-}
+.hexagon-container {}
 
-.hexagon-row{
+.hexagon-row {
   display: inline-flex;
   margin-top: -32px;
   margin-left: -50px;
 
 }
-.hexagon-row:nth-child(even){
+
+.hexagon-row:nth-child(even) {
   margin-left: 2px;
 }
 
-.item-hexagon{
+.item-hexagon {
   width: 100px;
   height: 110px;
   background-color: #1E1E1E;
@@ -156,14 +160,14 @@ body {
   position: relative;
 }
 
-.item-hexagon::after{
+.item-hexagon::after {
   content: '';
   position: absolute;
   top: 2px;
   bottom: 2px;
   right: 2px;
   left: 2px;
-  background-color:#1E1E1E ;
+  background-color: #1E1E1E;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
@@ -172,3 +176,36 @@ body {
   transition: 0s;
 }
 
+
+.cracking-bg-for-section-title {
+  width: 100%;
+  background: linear-gradient(90deg,
+      rgba(57, 255, 20, 1) 0%,
+      rgba(57, 255, 20, 1) 40%,
+      transparent 60%,
+      transparent 100%);
+  background-size: 200%;
+  animation: crack-animation-for-section-title 5s ease-in-out infinite alternate;
+}
+
+@keyframes crack-animation-for-section-title {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 100%;
+  }
+}
+
+.text-stroke {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  color: transparent;
+}
+
+.text-stroke-primary {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(57, 255, 20, 1);
+  color: transparent;
+}

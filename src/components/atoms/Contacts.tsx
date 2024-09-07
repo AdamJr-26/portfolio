@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 
 function Contacts() {
     return (
-        <div className='w-full  flex sm:justify-around gap-[24px]'>
+        <div className='w-full  flex sm:justify-end gap-[24px]'>
             <a href="https://github.com/AdamJr-26" target='_blank' className='flex items-center gap-[8px]'>
                 <Icon className='text-white ' icon="mdi:github" />
                 <span className='text-white md:flex'>Github </span>

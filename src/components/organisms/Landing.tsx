@@ -21,6 +21,7 @@ function Landing() {
     return (
         <section className='flex flex-row justify-center relative overflow-hidden max-h-fit min-h-dvh'>
             <Background />
+            
             {/* <div className='absolute bottom-0 right-0 opacity-30 hidden lg:flex'>
                 <svg width="162" height="164" viewBox="0 0 162 164" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="0.5" y="0.5" width="111.709" height="111.709" stroke="white" />
@@ -35,7 +36,7 @@ function Landing() {
                 <div className='flex items-center justify-between w-full'>
                     <div className='flex flex-col gap-[20px] w-full'>
                         <GreetingText />
-                        <p className=' text-white text-[12px] md:text-[16px] xl:text-[18px]'>I’m currently into Frontend Dev, Backend Dev</p>
+                        <p className=' text-white text-[12px] md:text-[16px] xl:text-[18px]'>I’m currently into Web Development.</p>
                         <nav className='flex items-center gap-[10px]'>
                             <Link to='#experiences' className='flex items-center'><span className='text-primary '><Icon icon="mdi:arrow-down-thin" /></span><span className='text-gray-700 font-medium'>experiences</span></Link>
                             {/* <Link to='#projects' className='flex items-center'><span className='text-primary '><Icon icon="mdi:arrow-down-thin" /></span><span className='text-gray-700 font-medium'>Projects</span></Link> */}

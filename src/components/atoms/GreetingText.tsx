@@ -10,7 +10,7 @@ const GreetingText = () => {
             <Typewriter
                 options={{
                     autoStart: true,
-                    loop: true,
+                    loop: false,
                     delay: 25,
                     deleteSpeed: 25,
                     cursor: '_',
@@ -19,12 +19,12 @@ const GreetingText = () => {
                     typewriter
                         .typeString('<span class="text-white text-[36px] md:text-[42px] lg:text-[52px]" >Hi, I\'m a</span>')
                         .pauseFor(500)
-                        .typeString('<span class="text-primary text-[36px] md:text-[42px] lg:text-[52px]"> web developer</span>')
+                        .typeString('<span class="text-stroke-primary font-bold text-[36px] md:text-[42px] lg:text-[52px]"> web developer</span>')
                         .pauseFor(100)
                         .typeString(' <span class="text-white text-[36px] md:text-[42px] lg:text-[52px]">and</span>')
                         .pauseFor(500)
-                        .typeString(`<span class="text-primary text-[36px] md:text-[42px] lg:text-[52px]"> computer technician.</span>`)
-                        .pauseFor(5000)
+                        .typeString(`<span class="text-stroke-primary font-bold text-[36px] md:text-[42px] lg:text-[52px]"> computer technician.</span>`)
+                        .pauseFor(10000)
                         .start();
                 }}
             />

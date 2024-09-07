@@ -14,13 +14,13 @@ function Home() {
   }, [location]);
 
   return (
-    <div className='flex gap-[0px] flex-col font-body w-full bg-dark'>
+    <div className='flex gap-[0px] gap-[30px] flex-col font-body w-full bg-dark'>
       <Landing />
       <Experiences />
       {/* <Projects /> */} 
       <Skills />
-      <About />
-      <Contacts />
+      {/* <About /> */}
+      {/* <Contacts /> */}
     </div>
   )
 }
