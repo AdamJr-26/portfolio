@@ -9,7 +9,7 @@ export default {
   theme: {
     fontFamily: {
       serif: ['Roboto', ...fontFamily.serif],
-      body: ['Roboto Slab']
+      body: ['"Roboto Slab']
     },
 
     extend: {

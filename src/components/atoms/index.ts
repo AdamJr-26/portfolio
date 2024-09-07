@@ -8,3 +8,7 @@ export { default as SkillHexagonRow } from './SkillHexagonRow';
 export { default as DotsBackground } from './DotsBackground';
 export { default as InViewWrapper } from './InViewWrapper';
 export { default as HexagonBackground } from './HexagonBackground';
+export { default as ReactModalWrapper } from './ReactModalWrapper';
+export { default as SliderNextPrev } from './SliderNextPrev';
+export { default as RoughRectangle } from './RoughRectangle';
+export { default as RoughPolygon } from './RoughPolygon';

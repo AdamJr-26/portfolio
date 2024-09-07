@@ -12,6 +12,7 @@ function Experiences() {
       companyName: 'Alfamart Trading Philippines Inc.',
       jobTitle: 'Information Technology Assistant',
       dates: '09/2023 - 03/2024',
+      responsibilities: 'Utilized my knowledge in UI/UX design to help the team deliver the most effective solution for the client, implementing best practices to optimize the application developed with Python, React, and Laravel.',
       achievements: [
         {
           imgsrcs: [
@@ -46,7 +47,7 @@ function Experiences() {
           ],
           title: 'Goole Chat Bot - Alfie',
           technologies: ['Python, Flask, React'],
-          description: ''
+          description: 'A knowledge base chatbot to provide quick assistance with concerns'
         },
       ]
     },
@@ -54,6 +55,7 @@ function Experiences() {
       companyName: 'Top Bliss',
       jobTitle: 'Frontend Web Developer',
       dates: '06/2022 - 07/2022',
+      responsibilities: 'At Top Bliss, I served as a Frontend Web Developer, where I collaborated on the development of an attendance monitoring system and collaborated with UI/UX designers and backend developers to ensure its success. My proficiency in React, JavaScript, HTML, CSS, and other technologies aligns well with the requirements of the role.',
       achievements: [
         {
           imgsrcs: [
@@ -65,38 +67,36 @@ function Experiences() {
             'my-portoflio/hr-services/yhmnm3yiohspiryoqsj8',
             'my-portoflio/hr-services/tpg4rnq0u34pv4xrocmp',
             'my-portoflio/hr-services/l63mmtltuvcozcs7igq2'
-
           ],
           title: 'HR Services',
           technologies: ['PostgreSQL, VueJS, ExpressJS'],
-          description: ''
+          description: 'Leave - Attendance Tracker'
         }
       ]
     },
   ]
   return (
-    <section id='experiences' className='flex flex-col relative overflow-visible max-h-fit'>
+    <section id='experiences' className='flex flex-col relative overflow-visible min-h-dvh max-h-fit'>
       <div className='absolute left-0 top-[50%] -translate-y-[50%] hidden 2xl:flex'>
         <DotsBackground />
       </div>
-      <div className='absolute right-0 -top-[50px]  hidden 2xl:flex border-l-[1px] border-t-[1px] border-b-[1px] border-white min-h-[100px] min-w-[150px]'>
+      <div className='absolute right-0 -top-[100px]  hidden xl:flex  border-l-[1px] border-t-[1px] border-b-[1px] border-white min-h-[100px] min-w-[150px]'>
       </div>
-      <div className=' max-w-[1366px] w-full flex flex-col m-auto p-[10px] lg:px-[20px]'>
+      <div className=' max-w-[1366px] w-full flex flex-col gap-[20px] m-auto p-[10px] lg:px-[20px]'>
         <div className='h-fit flex items-center gap-[20px] '>
           <p className='font-medium text-[24px] md:text-[28px] lg:text-[32px]'>
             <span className='text-primary'>#</span>
             <span className='text-white'>experiences</span>
           </p>
-          <div className='min-h-[2px] bg-primary min-w-[80px] md:min-w-[300px]'></div>
+          <div className='cracking-bg-for-section-title min-h-[1px] xl:min-h-[2px]'></div>
         </div>
         {/* max-w-[1366px] w-full flex flex-col items-center justify-between relative z-10 p-[10px] lg:px-[20px] gap-[20px] */}
-        <div className='flex flex-col gap-[30px] sm:p-[20px]  '>
+        <div className='flex flex-col gap-[30px] sm:px-[20px]  '>
           {
             jobExperiences?.map((experience, i): any => (
               <ExperienceCard key={i} experience={experience} />
             ))
           }
-         
         </div>
       </div>
     </section >
