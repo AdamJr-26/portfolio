@@ -15,13 +15,13 @@ const GreetingText = () => {
                 }}
                 onInit={(typewriter) => {
                     typewriter
-                        .typeString('<span class="text-white text-[36px] md:text-[42px] lg:text-[52px]" >Hi, I\'m a</span>')
+                        .typeString('<span class="text-white text-[36px] md:text-[42px] lg:text-[52px]" >Hi, I\'m </span>')
                         .pauseFor(500)
-                        .typeString('<span class="text-stroke-primary font-bold text-[36px] md:text-[42px] lg:text-[52px]"> web developer</span>')
+                        .typeString('<span class="text-stroke-primary font-bold text-[36px] md:text-[42px] lg:text-[52px]"> Adam Marcaida Jr.,</span>')
                         .pauseFor(100)
-                        .typeString(' <span class="text-white text-[36px] md:text-[42px] lg:text-[52px]">and</span>')
+                        .typeString(' <span class="text-white text-[36px] md:text-[42px] lg:text-[52px]">a</span>')
                         .pauseFor(500)
-                        .typeString(`<span class="text-stroke-primary font-bold text-[36px] md:text-[42px] lg:text-[52px]"> computer technician.</span>`)
+                        .typeString(`<span class="text-stroke-primary font-bold text-[36px] md:text-[42px] lg:text-[52px]"> Web Developer.</span>`)
                         .pauseFor(10000)
                         .start();
                 }}
