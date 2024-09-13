@@ -8,8 +8,8 @@ export default {
   content: ["./src/**/*.{html,js,ts,tsx}"],
   theme: {
     fontFamily: {
-      serif: ['Roboto', ...fontFamily.serif],
-      body: ['"Roboto Slab']
+      // serif: ['Roboto', ...fontFamily.serif],
+      body: ['"Inter"']
     },
 
     extend: {

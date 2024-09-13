@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import {  useLocation } from 'react-router-dom';
-import {  Experiences,Skills, Landing } from '../organisms/index';
+import {  Experiences,Skills, Landing,Footer } from '../organisms/index';
 function Home() {
   const location = useLocation();
 
@@ -19,6 +19,7 @@ function Home() {
       <Experiences />
       {/* <Projects /> */} 
       <Skills />
+      <Footer />
       {/* <About /> */}
       {/* <Contacts /> */}
     </div>

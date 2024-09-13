@@ -32,18 +32,18 @@ function Landing() {
 
             <div className='max-w-[1366px] w-full flex flex-col items-center justify-between relative  p-[10px] lg:px-[20px] gap-[20px]'>
                 <TopNavBar />
-                <div className='flex items-center justify-between w-full'>
-                    <div className='flex flex-col gap-[20px] w-full'>
+                <div className='flex items-center justify-between w-full '>
+                    <div className='flex flex-col gap-[20px] w-75 lg:w-[60%] '>
                         <GreetingText />
                         <p className=' text-white text-[12px] md:text-[16px] xl:text-[18px]'>I’m currently into Web Development.</p>
                         <nav className='flex items-center gap-[10px]'>
                             <Link to='#experiences' className='flex items-center'><span className='text-primary '><Icon icon="mdi:arrow-down-thin" /></span><span className='text-gray-700 font-medium'>experiences</span></Link>
                             {/* <Link to='#projects' className='flex items-center'><span className='text-primary '><Icon icon="mdi:arrow-down-thin" /></span><span className='text-gray-700 font-medium'>Projects</span></Link> */}
                             <Link to="#skills" className='flex items-center'><span className='text-primary '><Icon icon="mdi:arrow-down-thin" /></span><span className='text-gray-700 font-medium'>skills</span></Link>
-                            <Link to='#about' className='flex items-center'><span className='text-primary '><Icon icon="mdi:arrow-down-thin" /></span><span className='text-gray-700 font-medium'>about-me</span></Link>
+                            {/* <Link to='#about' className='flex items-center'><span className='text-primary '><Icon icon="mdi:arrow-down-thin" /></span><span className='text-gray-700 font-medium'>about-me</span></Link> */}
                         </nav>
                     </div>
-                    <div className=' hidden sm:flex items-center justify-center w-full'>
+                    <div className=' hidden sm:flex items-center justify-center w-25 lg:w-[40%] '>
                         <Me />
                     </div>
                 </div>

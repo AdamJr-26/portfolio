@@ -8,6 +8,7 @@ function Skills() {
   const skills = [
     [
       {
+        name:'Tailwind',
         row: 1,
         col: 1,
         icon: <Icon className='text-[24px] w-auto' icon="devicon:tailwindcss" />,
@@ -20,6 +21,7 @@ function Skills() {
     ],
     [
       {
+        name:'SASS',
         row: 2,
         col: 1,
         icon: <Icon className='text-[24px] w-auto' icon="devicon:sass" />,
@@ -30,6 +32,7 @@ function Skills() {
         }
       },
       {
+        name:'Git',
         row: 2,
         col: 2,
         icon: <Icon className='text-[24px] w-auto' icon="devicon:git" />,
@@ -40,6 +43,7 @@ function Skills() {
         }
       },
       {
+        name:'TypeScript',
         row: 2,
         col: 3,
         icon: <Icon className='text-[24px] w-auto' icon="devicon:typescript" />,
@@ -50,6 +54,7 @@ function Skills() {
         }
       },
       {
+        name:'Figma',
         row: 2,
         col: 4,
         icon: <Icon className='text-[24px] w-auto' icon="devicon:figma" />,
@@ -62,6 +67,7 @@ function Skills() {
     ],
     [
       {
+        name:'React',
         row: 3,
         col: 1,
         icon: <Icon className='text-[24px] w-auto' icon="logos:react" />,
@@ -72,6 +78,7 @@ function Skills() {
         }
       },
       {
+        name:'JavaScript',
         row: 3,
         col: 2,
         icon: <Icon className='text-[24px] w-auto' icon="logos:javascript" />,
@@ -82,6 +89,7 @@ function Skills() {
         }
       },
       {
+        name:'MySql',
         row: 3,
         col: 3,
         icon: <Icon className='text-[24px] w-auto' icon="logos:mysql" />,
@@ -94,6 +102,7 @@ function Skills() {
     ],
     [
       {
+        name:'ExpressJS',
         row: 4,
         col: 1,
         icon: <Icon className='text-[24px] w-auto' icon="devicon:express" />,
@@ -104,6 +113,7 @@ function Skills() {
         }
       },
       {
+        name:'Python',
         row: 4,
         col: 2,
         icon: <Icon className='text-[24px] w-auto' icon="devicon:python" />,
@@ -114,6 +124,7 @@ function Skills() {
         }
       },
       {
+        name:'React Native',
         row: 4,
         col: 3,
         icon: <Icon className='text-[24px] w-auto text-white' icon="tabler:brand-react-native" />,
@@ -124,6 +135,7 @@ function Skills() {
         }
       },
       {
+        name:'MongoDB',
         row: 4,
         col: 4,
         icon: <Icon className='text-[24px] w-auto text-white' icon="devicon:mongodb" />,
@@ -136,6 +148,7 @@ function Skills() {
     ],
     [
       {
+        name:'VueJs',
         row: 5,
         col: 1,
         icon: <Icon className='text-[24px] w-auto text-white' icon="devicon:vuejs" />,
@@ -160,7 +173,7 @@ function Skills() {
       <div className='absolute right-0 top-[50%] -translate-y-[50%] hidden 2xl:flex '>
         <DotsBackground />
       </div>
-      {/* <div className='absolute left-0 top-[100%] -translate-y-[50%] hidden 2xl:flex'>
+      {/* <div className='absolute left-0 top-[100%] -translate-y -[50%] hidden 2xl:flex'>
         <DotsBackground />
       </div> */}
       <div className='absolute left-0 -bottom-[50px]  hidden 2xl:flex border-r-[1px] border-t-[1px] border-b-[1px] border-white min-h-[100px] min-w-[100px]'>
@@ -197,7 +210,7 @@ function Skills() {
             {
               activePolygon &&
               <div className='relative w-full min-h-full flex flex-col gap-[24px] justify-between '>
-                <p className=' text-white font-bold text-[18px] md:text-[20] xl:text-[22px]'>JavaScript</p>
+                <p className=' text-white font-bold text-[18px] md:text-[20] xl:text-[22px]'>{activePolygon?.name}</p>
                 <div className='flex flex-col gap-[10px] '>
                   <p className='text-white font-bold text-[15px] md:text-[18px] xl:text-[20px]'>Level</p>
                   <div className='flex flex-col gap-[3px] '>
