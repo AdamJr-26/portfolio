@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 
 function LetsChat() {
   return (
-    <div className='flex items-center justify-between text-white border-[1px] p-[8px] w-full md:w-[60%] max-w-[640px]'>
+    <div className='flex items-center justify-between text-white border-[1px] p-[8px] w-full md:w-[60%] lg:w-[40%] max-w-[640px]'>
       <p className='text-white'>A.C.M.</p>
       <div>
         <address>
