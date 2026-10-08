@@ -1,42 +1,26 @@
-/** @type {import('tailwindcss').Config} */
-import defaultTheme from "tailwindcss/defaultTheme";
-import forms from "@tailwindcss/forms";
-import { fontFamily } from "tailwindcss/defaultTheme";
-import colors from "tailwindcss/colors";
-const plugin = require('tailwindcss/plugin');
-export default {
-  content: ["./src/**/*.{html,js,ts,tsx}"],
-  theme: {
-    fontFamily: {
-      // serif: ['Roboto', ...fontFamily.serif],
-      body: ['"Inter"']
-    },
+import defaultTheme from 'tailwindcss/defaultTheme';
 
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
     extend: {
-      boxShadow: {
-        'hexa': '0 35px 60px -15px rgba(30, 30, 30, 0.3)',
-      },
-      textColor: {
-        light: colors.neutral[300],
-        dark: colors.neutral[900],
-      },
-      borderColor: {
-        light: colors.neutral[200],
-        dark: colors.neutral[800],
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        display: ['"Space Grotesk"', 'Inter', ...defaultTheme.fontFamily.sans],
+        mono: ['"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
       },
       colors: {
         primary: '#39FF14',
-        dark: "#0A0A0A",
-        dim: "#1E1E1E",
-        black: '#000000',
-        gray: {
-          700: '#3F3F3F',
-        },
-
+        dark: '#0A0A0A',
+        dim: '#1E1E1E',
+        surface: '#111111',
+        line: '#262626',
       },
-
+      boxShadow: {
+        glow: '0 0 0 1px rgba(57, 255, 20, 0.35), 0 0 32px -6px rgba(57, 255, 20, 0.45)',
+      },
     },
   },
-  plugins: [
-  ],
+  plugins: [],
 }

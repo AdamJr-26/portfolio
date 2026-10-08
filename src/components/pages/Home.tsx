@@ -1,29 +1,29 @@
-import { useEffect } from 'react'
-import {  useLocation } from 'react-router-dom';
-import {  Experiences,Skills, Landing,Footer } from '../organisms/index';
+import { About, Contacts, Experiences, Footer, Landing, Projects, Skills } from '../organisms';
+import { Marquee, TopNavBar } from '../molecules';
+import { profile } from '../../data/profile';
+
 function Home() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.hash) {
-      const element = document.getElementById(location.hash.substring(1));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [location]);
-
   return (
-    <div className='flex gap-[0px] gap-[30px] flex-col font-body w-full bg-dark'>
-      <Landing />
-      <Experiences />
-      {/* <Projects /> */} 
-      <Skills />
+    <>
+      <a
+        href='#main'
+        className='sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-3 focus:py-2 focus:text-dark'
+      >
+        Skip to content
+      </a>
+      <TopNavBar />
+      <main id='main'>
+        <Landing />
+        <Marquee items={profile.disciplines} />
+        <About />
+        <Experiences />
+        <Projects />
+        <Skills />
+        <Contacts />
+      </main>
       <Footer />
-      {/* <About /> */}
-      {/* <Contacts /> */}
-    </div>
-  )
+    </>
+  );
 }
 
-export default Home
+export default Home;

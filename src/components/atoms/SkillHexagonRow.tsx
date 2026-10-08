@@ -1,51 +1,51 @@
-import React, { useEffect } from 'react'
-import VanillaTilt from 'vanilla-tilt';
-
-interface Skill {
-  row: number;
-  col: number;
-  icon: React.ReactNode;
-}
+import { useEffect, useRef } from 'react';
+import { Icon } from '@iconify/react';
+import VanillaTilt, { HTMLVanillaTiltElement } from 'vanilla-tilt';
+import type { Skill } from '../../data/types';
 
 interface SkillHexagonRowProps {
   skills: Skill[];
-  setActivePolygon: React.Dispatch<React.SetStateAction<Skill | null>>;
-  activePolygon: Skill | null;
+  activeSkill: Skill;
+  onSelect: (skill: Skill) => void;
 }
 
+function SkillHexagonRow({ skills, activeSkill, onSelect }: SkillHexagonRowProps) {
+  const rowRef = useRef<HTMLDivElement>(null);
 
-function SkillHexagonRow({ skills, setActivePolygon, activePolygon }: SkillHexagonRowProps) {
+  // Tilt only this row's hexagons, and tear the effect down on unmount.
   useEffect(() => {
-    const elements = Array.from(document.getElementsByClassName('hexagon-item')) as HTMLElement[];
-    VanillaTilt.init(elements, {
+    const row = rowRef.current;
+    if (!row || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const hexagons = Array.from(row.querySelectorAll<HTMLVanillaTiltElement>('.hex'));
+    VanillaTilt.init(hexagons, {
       max: 25,
       speed: 300,
       scale: 1.1,
-      easing: "cubic-bezier(.03,.98,.52,.99)",
+      easing: 'cubic-bezier(.03,.98,.52,.99)',
       glare: false,
-      "max-glare": 0.2,
       gyroscope: false,
     });
+    return () => hexagons.forEach((hexagon) => hexagon.vanillaTilt?.destroy());
   }, []);
 
   return (
-    <div className='flex flex-row items-center justify-center gap-[8px] my-[-24px]'>
-      {skills.map((item, key) => (
-        <div
-          onClick={() => setActivePolygon(item)}
-          key={key}
-          className={`${activePolygon &&
-              (item.col === activePolygon.col && item.row === activePolygon.row)
-              ? 'hexagon-item-active'
-              : ''
-            } cursor-pointer hexagon-item flex items-center justify-center min-w-[100px] min-h-[115px]`}
+    <div ref={rowRef} className='hex-row'>
+      {skills.map((skill) => (
+        <button
+          key={skill.name}
+          type='button'
+          onClick={() => onSelect(skill)}
+          aria-pressed={skill.name === activeSkill.name}
+          aria-label={skill.name}
+          title={skill.name}
+          className='hex'
         >
-          <span className='hexagon-icon z-10'>{item.icon}</span>
-        </div>
+          <Icon icon={skill.icon} className='relative z-10 text-[28px] text-white sm:text-[34px]' aria-hidden='true' />
+        </button>
       ))}
     </div>
-
-  )
+  );
 }
 
-export default SkillHexagonRow
+export default SkillHexagonRow;

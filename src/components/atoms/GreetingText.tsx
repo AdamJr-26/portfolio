@@ -1,34 +1,33 @@
 import Typewriter from 'typewriter-effect';
+import { profile } from '../../data/profile';
 
+const prefersReducedMotion =
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const GreetingText = () => {
-
-    return (
-        <p className=" text-white font-medium text-[24px]" >
-            <Typewriter
-                options={{
-                    autoStart: true,
-                    loop: false,
-                    delay: 25,
-                    deleteSpeed: 25,
-                    cursor: '_',
-                }}
-                onInit={(typewriter) => {
-                    typewriter
-                        .typeString('<span class="text-white text-[36px] md:text-[42px] lg:text-[52px]" >Hi, I\'m </span>')
-                        .pauseFor(500)
-                        .typeString('<span class="text-stroke-primary font-bold text-[36px] md:text-[42px] lg:text-[52px]"> Adam Marcaida Jr.,</span>')
-                        .pauseFor(100)
-                        .typeString(' <span class="text-white text-[36px] md:text-[42px] lg:text-[52px]">a</span>')
-                        .pauseFor(500)
-                        .typeString(`<span class="text-stroke-primary font-bold text-[36px] md:text-[42px] lg:text-[52px]"> Web Developer.</span>`)
-                        .pauseFor(10000)
-                        .start();
-                }}
-            />
-        </p>
-
-    );
-};
+/** "I'm a <role>" line that types through each role in a loop. */
+function GreetingText() {
+  return (
+    <p className='flex min-h-[2.5rem] flex-wrap items-baseline gap-x-2 font-display text-2xl text-neutral-400 md:text-3xl'>
+      <span>I&apos;m a</span>
+      <span className='text-white'>
+        {prefersReducedMotion ? (
+          profile.roles[0]
+        ) : (
+          <Typewriter
+            options={{
+              strings: profile.roles,
+              autoStart: true,
+              loop: true,
+              delay: 55,
+              deleteSpeed: 30,
+              cursor: '_',
+              cursorClassName: 'Typewriter__cursor text-primary',
+            }}
+          />
+        )}
+      </span>
+    </p>
+  );
+}
 
 export default GreetingText;

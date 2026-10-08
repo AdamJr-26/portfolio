@@ -1,1 +1,1 @@
-export { default as useInViewPort } from './UseInViewPort';
+export { default as useActiveSection } from './useActiveSection';

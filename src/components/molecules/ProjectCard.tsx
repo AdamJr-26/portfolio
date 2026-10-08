@@ -1,32 +1,37 @@
-import React from 'react';
-import MyProjectSample from '../../assets/images/myproject.png';
-
-
+import { Icon } from '@iconify/react';
+import { RoughPolygon, Tag } from '../atoms';
+import type { Project } from '../../data/types';
 
 interface ProjectCardProps {
-  projectCardRef: React.RefObject<HTMLDivElement>;
-
+  project: Project;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ projectCardRef }) => {
+function ProjectCard({ project }: ProjectCardProps) {
+  const { title, description, tags, year, url } = project;
+
   return (
-    <div ref={projectCardRef} className='border-[1px] border-white w-fit min-w-[320px]'>
-      <div>
-        <div className='w-fit'>
-          <img className='fit-contain w-full' src={MyProjectSample} alt="project" />
-        </div>
-        <div>
-          <p>Hello world hello world</p>
-        </div>
+    <a
+      href={url}
+      target='_blank'
+      rel='noreferrer'
+      className='group flex h-full flex-col border border-line bg-surface p-6 transition duration-300 hover:-translate-y-1 hover:border-primary/50'
+    >
+      <div className='mb-6 flex items-center justify-between'>
+        <RoughPolygon size={22} />
+        <span className='flex items-center gap-3 font-mono text-xs text-neutral-500'>
+          {year}
+          <Icon icon='mdi:github' className='text-lg text-neutral-400 transition group-hover:text-primary' aria-hidden='true' />
+        </span>
       </div>
-      <div className='min-h-[1px] w-full bg-white'></div>
-      <div>
-        <p className='text-white'>Title of The Description</p>
-        <p className='text-white'>The Description of the application bla bla bla</p>
-        <button className='text-white'>repository</button>
+      <h3 className='font-display text-lg font-semibold text-white transition-colors group-hover:text-primary'>{title}</h3>
+      <p className='mt-2 text-sm leading-relaxed text-neutral-400'>{description}</p>
+      <div className='mt-auto flex flex-wrap gap-1.5 pt-5'>
+        {tags.map((tag) => (
+          <Tag key={tag}>{tag}</Tag>
+        ))}
       </div>
-    </div>
+    </a>
   );
-};
+}
 
 export default ProjectCard;

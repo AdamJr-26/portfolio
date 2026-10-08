@@ -2,81 +2,58 @@ import { useEffect, useRef, useState } from 'react';
 import rough from 'roughjs';
 
 interface RoughRectangleProps {
-    svgWidthPercentage?: number;
-    rectangleFill?: string;
+  /** How much of the width to fill, 0–100 */
+  percentage: number;
+  fill?: string;
 }
 
-function RoughRectangle({ svgWidthPercentage = 90, rectangleFill = 'white' }: RoughRectangleProps) {
-    const svgRef = useRef<SVGSVGElement>(null);
-    const [svgWidth, setSvgWidth] = useState(0);
-    const [svgHeight, setSvgHeight] = useState(0);
-    const [animatedWidth, setAnimatedWidth] = useState(0); 
+const DURATION = 700;
 
-    // Update SVG dimensions on resize
-    useEffect(() => {
-        const updateSvgDimensions = () => {
-            if (svgRef.current) {
-                setSvgWidth(svgRef.current.clientWidth);
-                setSvgHeight(svgRef.current.clientHeight);
-            }
-        };
+/** A hand-drawn progress bar that animates to `percentage` whenever it changes. */
+function RoughRectangle({ percentage, fill = '#39FF14' }: RoughRectangleProps) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
 
-        updateSvgDimensions();
-        window.addEventListener('resize', updateSvgDimensions);
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const observer = new ResizeObserver(([entry]) => {
+      setSize({ width: entry.contentRect.width, height: entry.contentRect.height });
+    });
+    observer.observe(svg);
+    return () => observer.disconnect();
+  }, []);
 
-        return () => {
-            window.removeEventListener('resize', updateSvgDimensions);
-        };
-    }, []);
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg || size.width === 0) return;
 
-    // Animate the width percentage
-    useEffect(() => {
-        let startTime: number | null = null;
+    const roughSvg = rough.svg(svg);
+    const target = (size.width * percentage) / 100;
+    let frame = 0;
+    let start: number | null = null;
 
-        const animate = (timestamp: number) => {
-            if (!startTime) startTime = timestamp;
-            const progress = timestamp - startTime;
-            const duration = 700; 
-            const targetWidth = (svgWidth * svgWidthPercentage) / 100;
-            const newWidth = Math.min((progress / duration) * targetWidth, targetWidth);
+    const draw = (timestamp: number) => {
+      start ??= timestamp;
+      const progress = Math.min((timestamp - start) / DURATION, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const rect = roughSvg.rectangle(2, 2, Math.max(target * eased - 4, 1), size.height - 4, {
+        fill,
+        fillStyle: 'hachure',
+        hachureGap: 5,
+        stroke: fill,
+        roughness: 1.2,
+        seed: 7,
+      });
+      svg.replaceChildren(rect);
+      if (progress < 1) frame = requestAnimationFrame(draw);
+    };
 
-            setAnimatedWidth(newWidth);
+    frame = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(frame);
+  }, [percentage, fill, size]);
 
-            if (progress < duration) {
-                requestAnimationFrame(animate);
-            }
-        };
-
-        requestAnimationFrame(animate);
-    }, [svgWidth, svgWidthPercentage]);
-
-    // Draw the rough rectangle
-    useEffect(() => {
-        if (svgRef.current && svgWidth > 0 && svgHeight > 0) {
-            const roughSvg = rough.svg(svgRef.current);
-            const rectangle = roughSvg.rectangle(
-                0, 
-                0, 
-                animatedWidth, 
-                svgHeight, 
-                {
-                    fill: rectangleFill,
-                    hachureGap: 5,
-                }
-            );
-
-            svgRef.current.innerHTML = '';
-            svgRef.current.appendChild(rectangle);
-        }
-    }, [svgWidth, svgHeight, animatedWidth, rectangleFill]);
-
-    return (
-        <svg
-            width="100%"
-            height="100%"
-            ref={svgRef}
-        ></svg>
-    );
+  return <svg ref={svgRef} width='100%' height='100%' aria-hidden='true' />;
 }
 
 export default RoughRectangle;

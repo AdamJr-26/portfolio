@@ -1,37 +1,26 @@
-import { FC, ReactElement, useEffect, useState } from 'react';
-import { useInView } from "react-intersection-observer";
+import { CSSProperties, ReactNode } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface InViewWrapperProps {
-    delay?: number;
-    threshold?: number;
-    classname?: string;
-    style?: string;
-    children: ReactElement;
+  children: ReactNode;
+  /** Stagger delay in ms */
+  delay?: number;
+  className?: string;
 }
 
-const InViewWrapper: FC<InViewWrapperProps> = ({ delay = 0, threshold = 0, classname = 'inview-fade', style, children }) => {
-    const { ref, inView } = useInView({
-        threshold: threshold,
-    });
-    const [isVisible, setIsVisible] = useState(false);
+/** Fades and slides its children in the first time they scroll into view. */
+function InViewWrapper({ children, delay = 0, className = '' }: InViewWrapperProps) {
+  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '0px 0px -8% 0px' });
 
-    useEffect(() => {
-        if (inView) {
-            setIsVisible(true);
-            // const timer = setTimeout(() => {
-            //     setIsVisible(true);
-            // }, delay);
-            // return () => clearTimeout(timer);
-        } else {
-            setIsVisible(false);
-        }
-    }, [inView, delay]);
-
-    return (
-        <div ref={ref} className={`${isVisible ? classname : 'hide-element '} ${style}`}>
-            {children}
-        </div>
-    );
+  return (
+    <div
+      ref={ref}
+      style={{ '--reveal-delay': `${delay}ms` } as CSSProperties}
+      className={`reveal ${inView ? 'is-visible' : ''} ${className}`}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default InViewWrapper;

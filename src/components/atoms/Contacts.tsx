@@ -1,27 +1,31 @@
-
 import { Icon } from '@iconify/react';
+import { socials } from '../../data/profile';
 
-function Contacts() {
-    return (
-        <div className='w-full  flex sm:justify-end gap-[24px]'>
-            <a href="https://github.com/AdamJr-26" target='_blank' className='flex items-center gap-[8px]'>
-                <Icon className='text-white ' icon="mdi:github" />
-                <span className='text-white md:flex'>Github </span>
-            </a>
-            <a href='https://www.linkedin.com/in/adam-marcaida' target='_blank' className='flex items-center gap-[8px]'>
-                <Icon className='text-white ' icon="mdi:linkedin" />
-                <span className='text-white md:flex'>LinkedIn</span>
-            </a>
-            <a href='#' target='_blank' className='flex items-center gap-[8px]'>
-                <Icon className='text-white ' icon="ic:baseline-facebook" />
-                <span className='text-white md:flex'>Facebook</span>
-            </a>
-            {/* <a  href='#' target='_blank' className='flex items-center gap-[8px]'>
-                <Icon className='text-white ' icon="quill:paper" />
-                <span className='text-white hidden md:flex'>CV</span>
-            </a> */}
-        </div>
-    )
+interface ContactsProps {
+  showLabels?: boolean;
+  className?: string;
 }
 
-export default Contacts
+/** Social profile links. */
+function Contacts({ showLabels = true, className = '' }: ContactsProps) {
+  return (
+    <ul className={`flex items-center gap-5 ${className}`}>
+      {socials.map(({ label, href, icon }) => (
+        <li key={label}>
+          <a
+            href={href}
+            target='_blank'
+            rel='noreferrer'
+            aria-label={label}
+            className='flex items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-primary'
+          >
+            <Icon icon={icon} className='text-xl' aria-hidden='true' />
+            {showLabels && <span>{label}</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default Contacts;

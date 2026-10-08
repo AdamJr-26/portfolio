@@ -1,133 +1,76 @@
-
-import { SliderWrapper, ModalAchievementContent } from '../molecules/index'
-
-import { InViewWrapper, ReactModalWrapper, } from '../atoms';
-
-
-
-interface Achievements {
-    imgsrcs: string[];
-    title: string;
-    technologies: string[];
-    description: string;
-}
+import { useEffect, useRef, useState } from 'react';
+import { Icon } from '@iconify/react';
+import { Tag } from '../atoms';
+import ModalAchievementContent from './ModalAchievementContent';
+import { cld } from '../../lib/cloudinary';
+import type { Achievement as AchievementData } from '../../data/types';
 
 interface AchievementProps {
-    achievements: Achievements[]
+  achievement: AchievementData;
 }
 
-function Achievement({ achievements }: AchievementProps) {
+const CYCLE_MS = 1100;
 
-    const responsiveSettings = [
-        // if the item in slides are changed, change also the autoplay and infinite condition.
-        {
-            breakpoint: 1280,
-            settings: {
-                slidesToShow: achievements?.length,
-                slidesToScroll: achievements?.length,
-            }
-        },
-        {
-            breakpoint: 960,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
+/** Achievement card. Hovering flips through its screens; clicking opens the gallery. */
+function Achievement({ achievement }: AchievementProps) {
+  const { title, description, technologies, images } = achievement;
+  const [open, setOpen] = useState(false);
+  const [frame, setFrame] = useState(0);
+  const timer = useRef<number>();
 
-            }
-        },
-        {
-            breakpoint: 640,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 320,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        }
-    ];
+  const startCycle = () => {
+    if (images.length < 2 || timer.current) return;
+    timer.current = window.setInterval(() => setFrame((f) => (f + 1) % images.length), CYCLE_MS);
+  };
+  const stopCycle = () => {
+    window.clearInterval(timer.current);
+    timer.current = undefined;
+    setFrame(0);
+  };
 
+  useEffect(() => () => window.clearInterval(timer.current), []);
 
+  return (
+    <>
+      <button
+        type='button'
+        onClick={() => setOpen(true)}
+        onMouseEnter={startCycle}
+        onMouseLeave={stopCycle}
+        className='group flex h-full w-full flex-col border border-line bg-surface text-left transition duration-300 hover:-translate-y-1 hover:border-primary/50'
+      >
+        <span className='relative block aspect-[16/10] overflow-hidden border-b border-line bg-dim'>
+          <img
+            key={frame}
+            src={cld(images[frame], 'c_fill,g_north,w_640,h_400')}
+            alt=''
+            loading='lazy'
+            className='fade-in h-full w-full object-cover object-top'
+          />
+          <span className='absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-dark/90 to-transparent px-3 pb-2 pt-8 font-mono text-[11px] text-neutral-300'>
+            <span className='flex items-center gap-1.5'>
+              <Icon icon='mdi:image-multiple-outline' aria-hidden='true' />
+              {images.length} {images.length === 1 ? 'screen' : 'screens'}
+            </span>
+            <span className='flex items-center gap-1 text-primary opacity-0 transition-opacity group-hover:opacity-100'>
+              view <Icon icon='mdi:arrow-top-right' aria-hidden='true' />
+            </span>
+          </span>
+        </span>
+        <span className='flex flex-1 flex-col gap-2 p-4'>
+          <span className='font-display text-lg font-semibold text-white'>{title}</span>
+          <span className='text-sm leading-relaxed text-neutral-400'>{description}</span>
+          <span className='mt-auto flex flex-wrap gap-1.5 pt-3'>
+            {technologies.map((tech) => (
+              <Tag key={tech}>{tech}</Tag>
+            ))}
+          </span>
+        </span>
+      </button>
 
-    return (
-
-        <div className='flex flex-row   '>
-            <div className='min-w-[2px] bg-gray-700 min-h-full'></div>
-            <div className='flex flex-col h-fit w-full md:ml-[15px]'>
-                <SliderWrapper
-                    easing='ease-in'
-                    arrows={false}
-                    transitionDuration={400}
-                    duration={3000}
-                    autoplay={achievements?.length > 2 ? true : false}
-                    infinite={achievements?.length > 2 ? true : false}
-                    responsive={responsiveSettings}
-                    canSwipe={achievements?.length > 1 ? true : false}
-                    indicatorSize={5}
-                    isIndicators={false}
-                    cssClass="grid gap-[5px] w-full"
-                >
-                    {
-                        achievements?.map((achievement, index) => (
-                            <ReactModalWrapper button={
-                                <div className=''>
-                                    <InViewWrapper key={index} delay={0} classname='mx-[15px]'>
-                                        <div key={1} className='relative flex cursor-pointer flex-col h-full w-full items-center  justify-center  border-[1px] border-gray-700 hover:border-white '>
-                                            <div className='h-fit w-full'>
-                                                <SliderWrapper
-                                                    easing='ease-in'
-                                                    arrows={false}
-                                                    autoplay={true}
-                                                    duration={6000}
-                                                    infinite={true}
-                                                    transitionDuration={300}
-                                                    canSwipe={true}
-                                                    indicatorSize={2}
-                                                    cssClass=''
-                                                    isIndicators={false}
-                                                >
-                                                    {
-                                                        achievement['imgsrcs'].map((img, index) => (
-                                                            <img key={index} className='w-full h-[200px] md:h-[170px] object-cover ' src={`https://res.cloudinary.com/dy1od3qwx/image/upload/v1720276954/${img}`} alt="" />
-                                                        ))
-                                                    }
-                                                </SliderWrapper>
-                                            </div>
-                                            <div className='min-h-[1px] w-full bg-gray-700'></div>
-                                            <div className='flex justify-center min-h-fit py-[5px] px-[5px]'>
-                                                <p className='text-white text-[13px] sm:text-[14px] md:text-[15px] text-center'>{achievement?.technologies}</p>
-                                            </div>
-                                            <div className='min-h-[1px] w-full bg-gray-700'></div>
-                                            <div className='flex justify-center min-h-fit py-[5px] px-[5px]'>
-                                                <p className='text-white text-[13px] sm:text-[14px] md:text-[15px] text-center'>{achievement?.title}</p>
-                                            </div>
-                                            <div className='min-h-[1px] w-full bg-gray-700'></div>
-                                            <div className='flex justify-center min-h-fit py-[5px] px-[5px]'>
-                                                <p className='text-white text-[13px] sm:text-[14px] md:text-[15px] text-center'>{achievement?.description}</p>
-                                            </div>
-
-                                        </div>
-                                    </InViewWrapper>
-                                </div>
-                            }>
-                                <ModalAchievementContent
-                                    imgsrcs={achievement['imgsrcs']}
-                                    title={achievement['title']}
-                                    technologies={achievement['technologies']}
-                                    description={achievement['description']} />
-                            </ReactModalWrapper>
-
-                        ))
-                    }
-                </SliderWrapper>
-            </div>
-        </div>
-
-    )
+      {open && <ModalAchievementContent achievement={achievement} onClose={() => setOpen(false)} />}
+    </>
+  );
 }
 
-export default Achievement
+export default Achievement;

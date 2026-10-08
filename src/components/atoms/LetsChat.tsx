@@ -1,21 +1,30 @@
 import { Icon } from '@iconify/react';
+import { contactHref } from '../../data/profile';
 
-function LetsChat() {
-  return (
-    <div className='flex items-center justify-between text-white border-[1px] p-[8px] w-full md:w-[60%] lg:w-[40%] max-w-[640px]'>
-      <p className='text-white'>A.C.M.</p>
-      <div>
-        <address>
-          <a target='_blank' href="mailto:adamcompiomarcaida@example.com" className='flex items-center justify-center px-[8px] py-[4px] gap-[7px] border-[1px] border-white'>
-            <span className='text-white'>Let's Chat</span>
-            <span className='text-white'>
-              <Icon className='text-primary' icon="mdi:email-plus-outline" />
-            </span>
-          </a>
-        </address>
-      </div>
-    </div>
-  )
+interface LetsChatProps {
+  variant?: 'solid' | 'outline';
+  label?: string;
+  className?: string;
 }
 
-export default LetsChat
+function LetsChat({ variant = 'outline', label = "Let's chat", className = '' }: LetsChatProps) {
+  const isMail = contactHref.startsWith('mailto:');
+  const styles =
+    variant === 'solid'
+      ? 'bg-primary text-dark hover:shadow-glow'
+      : 'border border-primary/60 text-white hover:border-primary hover:bg-primary/10';
+
+  return (
+    <a
+      href={contactHref}
+      target={isMail ? undefined : '_blank'}
+      rel={isMail ? undefined : 'noreferrer'}
+      className={`inline-flex items-center justify-center gap-2 px-4 py-2 font-mono text-sm font-medium transition ${styles} ${className}`}
+    >
+      {label}
+      <Icon icon='mdi:email-plus-outline' className={variant === 'solid' ? '' : 'text-primary'} aria-hidden='true' />
+    </a>
+  );
+}
+
+export default LetsChat;
